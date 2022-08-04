@@ -32,7 +32,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnCamera;
+    Button btnCamera, btnAct2;
     ImageView imageView;
 
     public static final int CAMERA_PERM_CODE = 101;
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnCamera = findViewById(R.id.btnCam);
+        btnAct2 = findViewById(R.id.btnCam2);
         imageView = findViewById(R.id.ImgView);
 
         btnCamera.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Pregunta primero los permisos
                 askCameraPermissions();
+            }
+        });
+
+        btnAct2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent (MainActivity.this, Activity2.class);
+                startActivity(intent);
             }
         });
     }
