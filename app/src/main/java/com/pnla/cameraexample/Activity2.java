@@ -55,7 +55,6 @@ public class Activity2 extends AppCompatActivity {
                     // request permission
                     ActivityCompat.requestPermissions(Activity2.this
                             , new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},100);
-
                 }
                 else
                 {
