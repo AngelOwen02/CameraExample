@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,8 +50,7 @@ public class Activity2 extends AppCompatActivity {
 
                 // check condition
                 if (ContextCompat.checkSelfPermission(Activity2.this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
-                {
+                        Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
                     // when permission is nor granted
                     // request permission
                     ActivityCompat.requestPermissions(Activity2.this
@@ -80,6 +80,7 @@ public class Activity2 extends AppCompatActivity {
             }
         });
     }
+
     private void selectImage() {
         // clear previous data
         textView.setText("");
@@ -97,8 +98,7 @@ public class Activity2 extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // check condition
-        if (requestCode==100 && grantResults[0]== PackageManager.PERMISSION_GRANTED)
-        {
+        if (requestCode==100 && grantResults[0]== PackageManager.PERMISSION_GRANTED) {
             // when permission
             // is granted
             // call method
@@ -115,8 +115,7 @@ public class Activity2 extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // check condition
-        if (requestCode==100 && resultCode==RESULT_OK && data!=null)
-        {
+        if (requestCode==100 && resultCode==RESULT_OK && data!=null) {
             // when result is ok
             // initialize uri
             Uri uri=data.getData();
@@ -133,6 +132,7 @@ public class Activity2 extends AppCompatActivity {
                 sImage= Base64.encodeToString(bytes, Base64.DEFAULT);
                 // set encoded text on textview
                 textView.setText(sImage);
+                Log.e("CodigoDeBase64", "" + sImage);
 
             } catch (IOException e) {
                 e.printStackTrace();
