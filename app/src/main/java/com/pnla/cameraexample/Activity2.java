@@ -111,6 +111,7 @@ public class Activity2 extends AppCompatActivity {
         }
     }
 
+    // todo pasar esto al otro main para que se comprima automaticamente a base64
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

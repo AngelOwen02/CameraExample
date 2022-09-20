@@ -102,18 +102,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("imagefromDecode1", ""+resultCode+"  " + imageUri);
-        Log.e("imagefromDecode1", ""+":   " +"" + myimageFile);
-        String pathImage=String.valueOf( myimageFile);
-        String substring=pathImage.substring(1);
-        //urispahts.add(substring);
 
-        if(requestCode == CAMERA_REQUEST_CODE){
-            if(resultCode == Activity.RESULT_OK){
-                File f = new File(currentPhotoPath);
-                imageView.setImageURI(Uri.fromFile(f));
+        //if(imageUri!=null) {
+            Log.e("imagefromDecode1", "" + resultCode + "  " + imageUri);
+            Log.e("imagefromDecode1", "" + ":   " + "" + myimageFile);
+            String pathImage = String.valueOf(imageUri);
+            String substring = pathImage.substring(1);
+            //urispahts.add(substring);
+
+            if (requestCode == CAMERA_REQUEST_CODE) {
+                if (resultCode == Activity.RESULT_OK) {
+                    File f = new File(currentPhotoPath);
+                    imageView.setImageURI(Uri.fromFile(f));
+                }
             }
-        }
+        //} else {
+
+        //}
     }
 
     private File createImageFile() throws IOException {
@@ -152,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                         "com.pnla.android.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                imageUri = photoURI;
                 startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
             }
         }
